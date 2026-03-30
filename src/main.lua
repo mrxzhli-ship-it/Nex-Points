@@ -28,10 +28,10 @@ local Window = Rayfield:CreateWindow({
 local Tabs = {
     main = Window:CreateTab("Main", 4483362458),
     player = Window:CreateTab("Player", 4483362458),
+    weapon = Window:CreateTab("Weapon", 4483362458)
     farm = Window:CreateTab("Farm", 4483362458),
     misc = Window:CreateTab("Misc", 4483362458),
     settings = Window:CreateTab("Settings", 4483362458),
-    weapon = Window:CreateTab("Weapon", 4483362458)
 }
 -- Load tab scripts from GitHub
 local baseURL = "https://raw.githubusercontent.com/YOUR_USERNAME/NexusPoint/main/src/tabs/"
