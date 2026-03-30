@@ -34,16 +34,24 @@ local Tabs = {
     settings = Window:CreateTab("Settings", 4483362458),
 }
 -- Load tab scripts from GitHub
-local baseURL = "https://raw.githubusercontent.com/YOUR_USERNAME/NexusPoint/main/src/tabs/"
-
 for name, tab in pairs(Tabs) do
+    local url = baseURL .. name .. ".lua"
+    print("Loading:", url)
+
     local success, func = pcall(function()
-        return loadstring(game:HttpGet(baseURL .. name .. ".lua"))()
+        return loadstring(game:HttpGet(url))()
     end)
 
-    if success and func then
-        func(tab)
+    if success then
+        print("SUCCESS LOAD:", name, func)
+
+        if typeof(func) == "function" then
+            print("RUNNING TAB:", name)
+            func(tab)
+        else
+            warn("NOT A FUNCTION:", name)
+        end
     else
-        warn("Failed to load tab:", name)
+        warn("FAILED LOAD:", name, func)
     end
 end
